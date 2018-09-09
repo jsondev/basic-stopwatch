@@ -13,11 +13,15 @@ this.startTime = function (){
 
 this.stop = function(){
     if(!running){
-        running = false;
-        stopTime = new Date();
+        throw new Error ('Stopwatch is currently stopped.')
+        
     }
     else{
-        throw new Error ('Stopwatch is currently stopped.')
+        running = false;
+        endTime = new Date();
     }
+    // calculate seconds
+    const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+    duration += seconds;
 }
 }
